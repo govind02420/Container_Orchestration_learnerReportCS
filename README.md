@@ -27,9 +27,9 @@ kubectl port-forward svc/learner-report-fe-service 8081:3000
 kubectl port-forward svc/learner-report-be-service 3000:3000
 ```
  - Now open:
+- Frontend → http://localhost:8081
+- Backend → http://localhost:3000
 
-Frontend → http://localhost:8081
-Backend → http://localhost:3000
 #
 ### 2. Helm Chart (Preferred)
  - Install Helm Release
