@@ -57,11 +57,8 @@ learnerReportCS/
 │
 ├── k8s/                           # Raw Kubernetes YAMLs
 │   ├── backend-deployment.yaml
-│   ├── backend-service.yaml
 │   ├── frontend-deployment.yaml
-│   ├── frontend-service.yaml
 │   ├── mongo-deployment.yaml
-│   ├── mongo-service.yaml
 │   └── ingress.yaml               # Optional: plain ingress
 │
 ├── charts/                        # Helm charts
