@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learner-report-fe
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: learner-report-fe
+  template:
+    metadata:
+      labels:
+        app: learner-report-fe
+    spec:
+      containers:
+        - name: learner-report-fe
+          image: govind02420/learner-report-fe:latest
+          ports:
+            - containerPort: 3000   # <-- FIXED (was 80)
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://learner-report-be-service:3000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: learner-report-fe-service
+spec:
+  selector:
+    app: learner-report-fe
+  ports:
+    - port: 3000      # <-- FIXED (was 80)
+      targetPort: 3000
+  type: NodePort

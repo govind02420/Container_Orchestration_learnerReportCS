@@ -1,0 +1,6 @@
+apiVersion: v2
+name: learner-report
+description: Helm chart for Learner Report fullstack app
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

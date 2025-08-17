@@ -1,0 +1,29 @@
+{{- if .Values.ingress.enabled }}
+Your application has been deployed with Ingress!
+
+Access it using the following URL(s):
+
+{{- range .Values.ingress.hosts }}
+  http://{{ .host }}
+{{- end }}
+
+{{- else }}
+Your application has been deployed without Ingress.
+
+To access your services, run:
+
+1. Backend Service:
+   kubectl get svc {{ include "learner-report.fullname" . }}-backend -n {{ .Release.Namespace }}
+
+2. Frontend Service:
+   kubectl get svc {{ include "learner-report.fullname" . }}-frontend -n {{ .Release.Namespace }}
+
+3. MongoDB Service:
+   kubectl get svc {{ include "learner-report.fullname" . }}-mongo -n {{ .Release.Namespace }}
+
+You can also port-forward for local testing:
+
+kubectl port-forward svc/{{ include "learner-report.fullname" . }}-frontend 8081:{{ .Values.service.frontend.port }} -n {{ .Release.Namespace }}
+
+Then open http://localhost:8081 in your browser.
+{{- end }}

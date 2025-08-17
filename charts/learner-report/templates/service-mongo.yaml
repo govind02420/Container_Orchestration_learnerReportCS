@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "learner-report.fullname" . }}-mongo
+spec:
+  type: {{ .Values.service.mongo.type }}
+  selector:
+    app: {{ include "learner-report.name" . }}-mongo
+  ports:
+    - port: {{ .Values.service.mongo.port }}
+      targetPort: {{ .Values.service.mongo.port }}
